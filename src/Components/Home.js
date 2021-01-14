@@ -95,8 +95,8 @@ class DesktopContainer extends Component {
             >
                <Container>
                 <Menu.Item as={ Link } to='/' active>ACCUEIL</Menu.Item>
-                <Menu.Item as={ Link } to='/product'>JE CHOISIS MON VACCIN</Menu.Item>
-                <Menu.Item as='a'>QUI SOMMES-NOUS ?</Menu.Item>
+                <Menu.Item as={ Link } to='/product'>QUI SOMMES-NOUS ?</Menu.Item>
+                <Menu.Item as='a'>JE CHOISIS MON VACCIN</Menu.Item>
                 <Menu.Item as='a'>CONTACT</Menu.Item>
                 <Menu.Item position='right'></Menu.Item>
                   <Button as='a' inverted={!fixed}>
@@ -267,11 +267,11 @@ const Home = () => (
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
         <Header as='h3' style={{ fontSize: '2em' }}>
-          Commandez votre Clever Vacci
+          Commandez votre CleverVacci©
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          Avec Clever Vacci vous aurez la science infuse. On vous surnommera
-          madame ou monsieur "Je sais tout", plus personne n'osera vous remettre
+          Avec CleverVacci© vous aurez la science infuse. <br /> On vous surnommera
+          Madame ou Monsieur "Je sais tout", plus personne n'osera vous remettre
           en question. Certifié par le lobby anti-complotiste !!! 
         </p>
         <Button as='a' size='large'>
@@ -288,12 +288,12 @@ const Home = () => (
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em' }}>
-          Vaccins trans-espèce bientôt en vente
+          Vaccins Trans-espèce© bientôt en vente
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-           Dauphin, loup, lion où tigre, vous pourrez bientôt voir la vie autrement.
-           Devenez ce que vous voulez grâce à notre nouveauté. Qui à dit que la vie 
-           ne devait se limiter qu'a une expérience humaine ? 
+           Dauphin, loup, lion ou tigre : vous pourrez bientôt voir la vie autrement.
+           Devenez ce que vous voulez grâce à notre dernière nouveauté. <br /> Qui a dit que la vie 
+           ne devait se limiter qu'à une expérience humaine ? 
         </p>
         <Button as='a' size='large'>
           EN SAVOIR PLUS
@@ -311,16 +311,16 @@ const Home = () => (
                 <List.Item as='a'>Plan du site</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
                 <List.Item as='a'>Ne cliquez surtout pas ici</List.Item>
-                <List.Item as='a'>Les restos préférés de nos développeurs</List.Item>
+                <List.Item as='a'>Les Super-héros préférés de nos développeurs</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='Services' />
               <List link inverted>
-                <List.Item as='a'>Pré-commandez le vaccin trans-espèce</List.Item>
+                <List.Item as='a'>Pré-commandez le vaccin Trans-espèce©</List.Item>
                 <List.Item as='a'>VENI*VIDI*VACCI FAQ</List.Item>
                 <List.Item as='a'>Nous rejoindre</List.Item>
-                <List.Item as='a'>Favorite X-Men</List.Item>
+                <List.Item as='a'>Les vaccins favoris des X-Men</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
