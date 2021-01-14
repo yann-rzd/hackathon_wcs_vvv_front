@@ -325,10 +325,10 @@ const Home = () => (
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>
-                Footer Header
+                Vous ne pourrez pas aller plus bas
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
+                En fait vous pouviez aller un peu plus bas, mais là c'est fini. Stop.
               </p>
             </Grid.Column>
           </Grid.Row>
