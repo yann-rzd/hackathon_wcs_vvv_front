@@ -256,7 +256,7 @@ const Home = () => (
               "Jamais je n'aurais dû faire confiance à leurs concurrents..."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='https://imagizer.imageshack.com/img924/3274/I6iWqe.png' />
+              <Image avatar src='https://ninehank.com/wp-content/uploads/014.jpg' />
               <b>Docteur Stephen Strange</b> New York, NY
             </p>
           </Grid.Column>
