@@ -94,16 +94,16 @@ class DesktopContainer extends Component {
               size='large'
             >
                <Container>
-                <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
-                <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>
+                <Menu.Item as={ Link } to='/' active>ACCUEIL</Menu.Item>
+                <Menu.Item as={ Link } to='/product'>JE CHOISIS MON VACCIN</Menu.Item>
+                <Menu.Item as='a'>QUI SOMMES-NOUS ?</Menu.Item>
+                <Menu.Item as='a'>CONTACT</Menu.Item>
                 <Menu.Item position='right'></Menu.Item>
                   <Button as='a' inverted={!fixed}>
-                    Log in
+                    MON PANIER
                   </Button>
                   <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                    Sign Up
+                    ME DÉCONNECTER
                   </Button>
               </Container>
             </Menu>
@@ -306,12 +306,12 @@ const Home = () => (
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
-              <Header inverted as='h4' content='About' />
+              <Header inverted as='h4' content='Pour aller plus loin' />
               <List link inverted>
-                <List.Item as='a'>Sitemap</List.Item>
+                <List.Item as='a'>Plan du site</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
-                <List.Item as='a'>Religious Ceremonies</List.Item>
-                <List.Item as='a'>Gazebo Plans</List.Item>
+                <List.Item as='a'>Ne cliquez surtout pas ici</List.Item>
+                <List.Item as='a'>Les restos préférés de nos développeurs</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
