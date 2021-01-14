@@ -16,6 +16,8 @@ import {
   Sidebar,
   Visibility
 } from 'semantic-ui-react'
+import './Home.css'
+
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -44,10 +46,10 @@ const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as='h2'
-      content='PRENEZ LE POUVOIR'
+      content=''
       inverted
       style={{
-        fontSize: mobile ? '1.5em' : '1.7em',
+        fontSize: mobile ? '2em' : '2.5em',
         fontWeight: 'normal',
         marginTop: mobile ? '0.5em' : '1.5em',
       }}
@@ -95,8 +97,8 @@ class DesktopContainer extends Component {
             >
                <Container>
                 <Menu.Item as={ Link } to='/' active>ACCUEIL</Menu.Item>
-                <Menu.Item as={ Link } to='/product'>QUI SOMMES-NOUS ?</Menu.Item>
-                <Menu.Item as='a'>JE CHOISIS MON VACCIN</Menu.Item>
+                <Menu.Item as={ Link } to='/products'>JE CHOISIS MON VACCIN</Menu.Item>
+                <Menu.Item as='a'>QUI SOMMES-NOUS ?</Menu.Item>
                 <Menu.Item as='a'>CONTACT</Menu.Item>
                 <Menu.Item position='right'></Menu.Item>
                   <Button as='a' inverted={!fixed}>
@@ -143,12 +145,10 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
-            <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
-            <Menu.Item as='a'>Company</Menu.Item>
-            <Menu.Item as='a'>Careers</Menu.Item>
-            <Menu.Item as='a'>Log in</Menu.Item>
-            <Menu.Item as='a'>Sign Up</Menu.Item>
+            <Menu.Item as={ Link } to='/' active>ACCUEIL</Menu.Item>
+            <Menu.Item as={ Link } to='/products'>JE CHOISIS MON VACCIN</Menu.Item>
+            <Menu.Item as='a'>QUI SOMMES-NOUS ?</Menu.Item>
+            <Menu.Item as='a'>CONTACT</Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -165,10 +165,10 @@ class MobileContainer extends Component {
                   </Menu.Item>
                   <Menu.Item position='right'>
                     <Button as='a' inverted>
-                      Log in
+                      PANIER
                     </Button>
                     <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
-                      Sign Up
+                      DECONNEXION
                     </Button>
                   </Menu.Item>
                 </Menu>
@@ -209,7 +209,7 @@ const Home = () => (
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
           <Grid.Column width={8}>
-            <Header as='h3' style={{ fontSize: '1.69em' }}>
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
               Échappez au Covid-19...
             </Header>
             <p style={{ fontSize: '1.33em' }}>
@@ -219,7 +219,7 @@ const Home = () => (
             face aux virus de la grippe, ainsi qu'aux <br />
             différents variants du Covid-19.
             </p>
-            <Header as='h4' style={{ fontSize: '1.69em' }}>
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
               ...et à la pesanteur ! <br /> Vos rêves les plus fous deviennent accessibles
             </Header>
             <p style={{ fontSize: '1.33em' }}>
@@ -246,13 +246,13 @@ const Home = () => (
       <Grid celled='internally' columns='equal' stackable>
         <Grid.Row textAlign='center'>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
               "Je n'en croyais pas mes yeux"
             </Header>
             <p style={{ fontSize: '1.33em' }}>Plusieurs de nos clients ont notamment retrouvé la vue grâce à notre dose NightVision©.</p>
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
               "Jamais je n'aurais dû faire confiance à leurs concurrents..."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
@@ -266,7 +266,7 @@ const Home = () => (
 
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
-        <Header as='h3' style={{ fontSize: '2em' }}>
+        <Header as='h3' style={{ fontSize: '1.85em' }}>
           Commandez votre CleverVacci©
         </Header>
         <p style={{ fontSize: '1.33em' }}>
@@ -287,7 +287,7 @@ const Home = () => (
           <a href='/#'>BIENTÔT DISPONIBLE</a>
         </Divider>
 
-        <Header as='h3' style={{ fontSize: '2em' }}>
+        <Header as='h3' style={{ fontSize: '1.85em' }}>
           Vaccins Trans-espèce© bientôt en vente
         </Header>
         <p style={{ fontSize: '1.33em' }}>
