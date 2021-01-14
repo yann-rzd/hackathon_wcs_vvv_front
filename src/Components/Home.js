@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { Link, BrowserRouter as Router } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { createMedia } from '@artsy/fresnel'
 import PropTypes from 'prop-types'
@@ -94,23 +93,9 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size='large'
             >
-
-
-
-{/* import { Link } from 'react-router-dom'
-
-<Menu>
-  <Menu.Item as={Link} to='/home'>
-    Home
-  </Menu.Item>
-</Menu>
- */}
-
-              <Container>
-              {/* <Router> */}
-                  <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
-                  <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
-                {/* </Router> */}
+               <Container>
+                <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
+                <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
                 <Menu.Item as='a'>Company</Menu.Item>
                 <Menu.Item as='a'>Careers</Menu.Item>
                 <Menu.Item position='right'></Menu.Item>
@@ -158,10 +143,8 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-              {/* <Router>              */}
-                  <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
-                  <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
-                {/* </Router> */}
+            <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
+            <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
             <Menu.Item as='a'>Company</Menu.Item>
             <Menu.Item as='a'>Careers</Menu.Item>
             <Menu.Item as='a'>Log in</Menu.Item>
