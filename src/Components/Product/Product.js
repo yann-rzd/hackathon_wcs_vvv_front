@@ -1,203 +1,210 @@
-// import React, { Component } from 'react';
-// import { Link } from 'react-router-dom'
-// import { createMedia } from '@artsy/fresnel';
-// import PropTypes from 'prop-types';
-// import {
-//   Button,
-//   Container,
-//   Divider,
-//   Grid,
-//   Header,
-//   Icon,
-//   Image,
-//   List,
-//   Menu,
-//   Segment,
-//   Sidebar,
-//   Visibility
-// } from 'semantic-ui-react';
+import React, { Component, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { createMedia } from '@artsy/fresnel';
+import PropTypes from 'prop-types';
+import {
+  Button,
+  Container,
+  // Divider,
+  // Grid,
+  // Header,
+  Icon,
+  // Image,
+  // List,
+  Menu,
+  Segment,
+  Sidebar,
+  Visibility
+} from 'semantic-ui-react';
 
-// import './Product.css';
+import './Product.css';
+import ProductDetails from './ProductDetail';
 
-// const { MediaContextProvider, Media } = createMedia({
-//   breakpoints: {
-//     mobile: 0,
-//     tablet: 768,
-//     computer: 1024,
-//   },
-// })
+const { MediaContextProvider, Media } = createMedia({
+  breakpoints: {
+    mobile: 0,
+    tablet: 768,
+    computer: 1024,
+  },
+})
 
-// /* Heads up!
-//  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
-//  * It can be more complicated, but you can create really flexible markup.
-//  */
-// class DesktopContainer extends Component {
-//   state = {}
+/* Heads up!
+ * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
+ * It can be more complicated, but you can create really flexible markup.
+ */
+class DesktopContainer extends Component {
+  state = {}
 
-//   hideFixedMenu = () => this.setState({ fixed: false })
-//   showFixedMenu = () => this.setState({ fixed: true })
+  hideFixedMenu = () => this.setState({ fixed: false })
+  showFixedMenu = () => this.setState({ fixed: true })
 
-//   render() {
-//     const { children } = this.props
-//     const { fixed } = this.state
+  render() {
+    const { children } = this.props
+    const { fixed } = this.state
 
-//     return (
-//       <Media greaterThan='mobile'>
-//         <Visibility
-//           once={false}
-//           onBottomPassed={this.showFixedMenu}
-//           onBottomPassedReverse={this.hideFixedMenu}
-//         >
-//           <Segment
-//             inverted
-//             textAlign='center'
-//             style={{ minHeight: 700, padding: '1em 0em' }}
-//             vertical
-//           >
-//             <Menu
-//               fixed={fixed ? 'top' : null}
-//               inverted={!fixed}
-//               pointing={!fixed}
-//               secondary={!fixed}
-//               size='large'
-//             >
-//               <Container>
-//                 <Menu.Item as={ Link } to='/'>Home</Menu.Item>
-//                 <Menu.Item as={ Link } to='/product' active>Product</Menu.Item>
-//                 <Menu.Item as='a'>Company</Menu.Item>
-//                 <Menu.Item as='a'>Careers</Menu.Item>
-//                 <Menu.Item position='right'>
-//                   <Button as='a' inverted={!fixed}>
-//                     Log in
-//                   </Button>
-//                   <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-//                     Sign Up
-//                   </Button>
-//                 </Menu.Item>
-//               </Container>
-//             </Menu>
-//           </Segment>
-//         </Visibility>
+    return (
+      <Media greaterThan='mobile'>
+        <Visibility
+          once={false}
+          onBottomPassed={this.showFixedMenu}
+          onBottomPassedReverse={this.hideFixedMenu}
+        >
+          <Segment
+            inverted
+            textAlign='center'
+            style={{ minHeight: 700, padding: '1em 0em' }}
+            vertical
+          >
+            <Menu
+              fixed={fixed ? 'top' : null}
+              inverted={!fixed}
+              pointing={!fixed}
+              secondary={!fixed}
+              size='large'
+            >
+              <Container>
+                <Menu.Item as={ Link } to='/'>Home</Menu.Item>
+                <Menu.Item as={ Link } to='/product' active>Product</Menu.Item>
+                <Menu.Item as='a'>Company</Menu.Item>
+                <Menu.Item as='a'>Careers</Menu.Item>
+                <Menu.Item position='right'>
+                  <Button as='a' inverted={!fixed}>
+                    Log in
+                  </Button>
+                  <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
+                    Sign Up
+                  </Button>
+                </Menu.Item>
+              </Container>
+            </Menu>
+          </Segment>
+        </Visibility>
 
-//         {children}
-//       </Media>
-//     )
-//   }
-// }
+         {children}
+       </Media>
+     )
+   }
+  }
 
-// DesktopContainer.propTypes = {
-//   children: PropTypes.node,
-// }
+DesktopContainer.propTypes = {
+  children: PropTypes.node,
+}
 
-// class MobileContainer extends Component {
-//   state = {}
+class MobileContainer extends Component {
+  state = {}
 
-//   handleSidebarHide = () => this.setState({ sidebarOpened: false })
+  handleSidebarHide = () => this.setState({ sidebarOpened: false })
 
-//   handleToggle = () => this.setState({ sidebarOpened: true })
+  handleToggle = () => this.setState({ sidebarOpened: true })
 
-//   render() {
-//     const { children } = this.props
-//     const { sidebarOpened } = this.state
+  render() {
+    const { children } = this.props
+    const { sidebarOpened } = this.state
 
-//     return (
-//       <Media as={Sidebar.Pushable} at='mobile'>
-//         <Sidebar.Pushable>
-//           <Sidebar
-//             as={Menu}
-//             animation='overlay'
-//             inverted
-//             onHide={this.handleSidebarHide}
-//             vertical
-//             visible={sidebarOpened}
-//           >
-//             <Menu.Item as={ Link } to='/'>Home</Menu.Item>
-//             <Menu.Item as={ Link } to='/product' active>Product</Menu.Item>
-//             <Menu.Item as='a'>Company</Menu.Item>
-//             <Menu.Item as='a'>Careers</Menu.Item>
-//             <Menu.Item as='a'>Log in</Menu.Item>
-//             <Menu.Item as='a'>Sign Up</Menu.Item>
-//           </Sidebar>
+    return (
+      <Media as={Sidebar.Pushable} at='mobile'>
+        <Sidebar.Pushable>
+          <Sidebar
+            as={Menu}
+            animation='overlay'
+            inverted
+            onHide={this.handleSidebarHide}
+            vertical
+            visible={sidebarOpened}
+          >
+            <Menu.Item as={ Link } to='/'>Home</Menu.Item>
+            <Menu.Item as={ Link } to='/product' active>Product</Menu.Item>
+            <Menu.Item as='a'>Company</Menu.Item>
+            <Menu.Item as='a'>Careers</Menu.Item>
+            <Menu.Item as='a'>Log in</Menu.Item>
+            <Menu.Item as='a'>Sign Up</Menu.Item>
+          </Sidebar>
 
-//           <Sidebar.Pusher dimmed={sidebarOpened}>
-//             <Segment
-//               inverted
-//               textAlign='center'
-//               style={{ minHeight: 350, padding: '1em 0em' }}
-//               vertical
-//             >
-//               <Container>
-//                 <Menu inverted pointing secondary size='large'>
-//                   <Menu.Item onClick={this.handleToggle}>
-//                     <Icon name='sidebar' />
-//                   </Menu.Item>
-//                   <Menu.Item position='right'>
-//                     <Button as='a' inverted>
-//                       Log in
-//                     </Button>
-//                     <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
-//                       Sign Up
-//                     </Button>
-//                   </Menu.Item>
-//                 </Menu>
-//               </Container>
-//             </Segment>
+          <Sidebar.Pusher dimmed={sidebarOpened}>
+            <Segment
+              inverted
+              textAlign='center'
+              style={{ minHeight: 350, padding: '1em 0em' }}
+              vertical
+            >
+              <Container>
+                <Menu inverted pointing secondary size='large'>
+                  <Menu.Item onClick={this.handleToggle}>
+                    <Icon name='sidebar' />
+                  </Menu.Item>
+                  <Menu.Item position='right'>
+                    <Button as='a' inverted>
+                      Log in
+                    </Button>
+                    <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
+                      Sign Up
+                    </Button>
+                  </Menu.Item>
+                </Menu>
+              </Container>
+            </Segment>
 
-//             {children}
-//           </Sidebar.Pusher>
-//         </Sidebar.Pushable>
-//       </Media>
-//     )
-//   }
-// }
+            {children}
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
+      </Media>
+    )
+  }
+}
 
-// MobileContainer.propTypes = {
-//   children: PropTypes.node,
-// }
+MobileContainer.propTypes = {
+  children: PropTypes.node,
+}
 
-// const ResponsiveContainer = ({ children }) => (
-//   /* Heads up!
-//    * For large applications it may not be best option to put all page into these containers at
-//    * they will be rendered twice for SSR.
-//    */
-//   <MediaContextProvider>
-//     <DesktopContainer>{children}</DesktopContainer>
-//     <MobileContainer>{children}</MobileContainer>
-//   </MediaContextProvider>
-// )
+const ResponsiveContainer = ({ children }) => (
+  /* Heads up!
+   * For large applications it may not be best option to put all page into these containers at
+   * they will be rendered twice for SSR.
+   */
+  <MediaContextProvider>
+    <DesktopContainer>{children}</DesktopContainer>
+    <MobileContainer>{children}</MobileContainer>
+  </MediaContextProvider>
+)
 
-// ResponsiveContainer.propTypes = {
-//   children: PropTypes.node,
-// }
+ResponsiveContainer.propTypes = {
+  children: PropTypes.node,
+}
 /*------------------------TO BE MODIFIED ------------------------ */
-// class Product extends Component {
-  // state
-  // const [product, setP] = useState(null);
-  // const { slug } = useParams();
+// 
 
-  // render() {
+const Product = () => {
+  const [product, setProduct] = useState(null);
 
-  //   return(
-  //     <div>
+  useEffect(() => {
+    const baseUrl = 'http://localhost:5000/product';
+      axios.get(`${baseUrl}`)
+        .then(res => console.log('Res', res.data[0]) || setProduct(res.data[0]))
+        .catch(err => {
+          console.error(err);
+        })
+    }, [])
 
-  //     </div>
-  //   )
-  // }
+  if (!product) {
+    return <p>Loading...</p>;
+  }
+  return (
+    <div>
+      {
+        product && product.map(prod => 
+          <ProductDetails key={prod.id} product={prod}/>
+        )
+      }
 
-  // useEffect(() => {
-  //   const baseUrl = 'https://my-json-server.typicode.com/bhubr/hackathon3-fake-api/posts';
-  //   axios.get(`${baseUrl}/${slug}`)
-  //     .then(res => setPost(res.data))
-  //     .catch(err => {
-  //       console.error(err);
-  //     })
-  // }, [slug])
-  // }
+    </div>
+  )
+}
 
-// export default Product;
+export default Product;
 
 // eslint-disable-next-line no-lone-blocks
-{/* <ResponsiveContainer>
+/* <ResponsiveContainer>
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
@@ -322,4 +329,4 @@
         </Grid>
       </Container>
     </Segment>
-  </ResponsiveContainer> */}
+  </ResponsiveContainer> */

@@ -1,4 +1,4 @@
 element.style {
-  max-height: 70px !important;
+  min-height: 70px !important;
   padding: 1em 0em;
 }
