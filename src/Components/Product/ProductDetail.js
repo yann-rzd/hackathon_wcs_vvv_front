@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet'
+import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { Grid, Image } from 'semantic-ui-react';
 import axios from 'axios';
+import './ProductDetail.css'
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(null);
@@ -29,22 +31,28 @@ const ProductDetails = () => {
     return <p>Loading</p>;
   }
   return (
-    <article className="PostDetails">
+    <div className='PostDetails'>
       <Helmet>
         <title>{product.name}</title>
         <link rel="canonical" href="https://hack3-blog-react-sans-seo.netlify.app/" />
         <meta name="description" content={product.description} />
       </Helmet>
-      <h2>{product.name}</h2>
-      <img src={product.image} alt={product.description}/>
-      <p><strong>{product.power}</strong></p>
-      <p>{product.description}</p>
-      <p>Durée : {product.duration_effect}</p>
-      <p>Effet secondaire : {product.effect}</p>
-      <p>En stock : {product.quantity}</p>
-      <p>Prix : {product.price}</p>
-      <Link to="/">Retour à l'accueil</Link>
-    </article>
+          <Grid>
+            <Grid.Column width={4} className='productImage'>
+              <Image src= {product.image} alt={product.description}/>
+            </Grid.Column>
+            <Grid.Column width={9}>
+              <h2>{product.name}</h2>
+              <p><strong>{product.power}</strong></p>
+              <p>{product.description}</p>
+              <p>Durée : {product.duration_effect}</p>
+              <p>Effet secondaire : {product.effect}</p>
+            </Grid.Column>
+            <Grid.Column width={2}>
+              <p>Prix : {product.price}</p>
+            </Grid.Column>
+      </Grid>   
+    </div>
   );
 }
 
