@@ -1,0 +1,19 @@
+body {
+    background-color: aqua;
+  }
+  
+  div.ui.inverted.vertical.center.aligned.segment {
+    /* background-color: ; */
+    background: url('https://imagizer.imageshack.com/img923/3442/TvjDj3.png') center;
+    background-size: 100% 100%;
+  }
+  
+  h1.ui.inverted.header {
+    color: black !important;
+  }
+  
+  div.ui.text.container {
+    color: black;
+  }
+  
+  @media all and (min-device-width: 480px)

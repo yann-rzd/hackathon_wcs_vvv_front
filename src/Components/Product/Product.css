@@ -2,3 +2,22 @@ element.style {
   min-height: 70px !important;
   padding: 1em 0em;
 }
+
+.PostDetails {
+  display: flex;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  border: black solid 2px;
+}
+
+.descrip {
+  text-align: center;
+}
+
+.product-img {
+  width: 100px;
+}

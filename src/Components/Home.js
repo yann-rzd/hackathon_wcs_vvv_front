@@ -16,6 +16,8 @@ import {
   Sidebar,
   Visibility
 } from 'semantic-ui-react'
+import './Home.css'
+
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -44,10 +46,10 @@ const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as='h2'
-      content='Prends ta picouse groos !'
+      content=''
       inverted
       style={{
-        fontSize: mobile ? '1.5em' : '1.7em',
+        fontSize: mobile ? '2em' : '2.5em',
         fontWeight: 'normal',
         marginTop: mobile ? '0.5em' : '1.5em',
       }}
@@ -94,16 +96,16 @@ class DesktopContainer extends Component {
               size='large'
             >
                <Container>
-                <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
-                <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>
+                <Menu.Item as={ Link } to='/' active>ACCUEIL</Menu.Item>
+                <Menu.Item as={ Link } to='/products'>JE CHOISIS MON VACCIN</Menu.Item>
+                <Menu.Item as='a'>QUI SOMMES-NOUS ?</Menu.Item>
+                <Menu.Item as='a'>CONTACT</Menu.Item>
                 <Menu.Item position='right'></Menu.Item>
                   <Button as='a' inverted={!fixed}>
-                    Log in
+                    MON PANIER
                   </Button>
                   <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                    Sign Up
+                    ME DÉCONNECTER
                   </Button>
               </Container>
             </Menu>
@@ -143,12 +145,10 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as={ Link } to='/' active>Home</Menu.Item>
-            <Menu.Item as={ Link } to='/product'>Product</Menu.Item>
-            <Menu.Item as='a'>Company</Menu.Item>
-            <Menu.Item as='a'>Careers</Menu.Item>
-            <Menu.Item as='a'>Log in</Menu.Item>
-            <Menu.Item as='a'>Sign Up</Menu.Item>
+            <Menu.Item as={ Link } to='/' active>ACCUEIL</Menu.Item>
+            <Menu.Item as={ Link } to='/products'>JE CHOISIS MON VACCIN</Menu.Item>
+            <Menu.Item as='a'>QUI SOMMES-NOUS ?</Menu.Item>
+            <Menu.Item as='a'>CONTACT</Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -165,10 +165,10 @@ class MobileContainer extends Component {
                   </Menu.Item>
                   <Menu.Item position='right'>
                     <Button as='a' inverted>
-                      Log in
+                      PANIER
                     </Button>
                     <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
-                      Sign Up
+                      DECONNEXION
                     </Button>
                   </Menu.Item>
                 </Menu>
@@ -209,28 +209,34 @@ const Home = () => (
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
           <Grid.Column width={8}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              Nous fournissons la meilleure came de super héros !
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
+              Échappez au Covid-19...
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              Let us delight your customers and empower your needs... through pure data analytics.
+            Tous les vaccins VENI*VIDI*VACCI sont <br />
+            certifiés par le Ministère de la santé <br />
+            et possèdent un taux d'efficacité de 97% <br />
+            face aux virus de la grippe, ainsi qu'aux <br />
+            différents variants du Covid-19.
             </p>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              We Make Bananas That Can Dance
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
+              ...et à la pesanteur ! <br /> Vos rêves les plus fous deviennent accessibles
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-              bioengineered.
+            Nous proposons toutefois quelque chose qu'aucun <br />
+            des laboratoires concurrents n'est en mesure d'offrir : <br />
+            la possibilité pour nos clients de choisir <br />
+            le Super-pouvoir dont ils ont toujours rêvé. <br /> 
+            Et si l'impossible devenait réalité dès maintenant !
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
+            <Image bordered rounded size='large' src='https://imagizer.imageshack.com/img924/3274/I6iWqe.png' />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
-            <Button size='huge'>Check Them Out</Button>
+            <Button size='huge'>JE CHOISIS MON VACCIN</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -240,18 +246,18 @@ const Home = () => (
       <Grid celled='internally' columns='equal' stackable>
         <Grid.Row textAlign='center'>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              "What a Company"
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
+              "Je n'en croyais pas mes yeux"
             </Header>
-            <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+            <p style={{ fontSize: '1.33em' }}>Plusieurs de nos clients ont notamment retrouvé la vue grâce à notre dose NightVision©.</p>
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              "I shouldn't have gone with their competitor."
+            <Header as='h3' style={{ fontSize: '1.85em' }}>
+              "Jamais je n'aurais dû faire confiance à leurs concurrents..."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='/images/avatar/large/nan.jpg' />
-              <b>Nan</b> Chief Fun Officer Acme Toys
+              <Image avatar src='https://ninehank.com/wp-content/uploads/014.jpg' />
+              <b>Docteur Stephen Strange</b> New York, NY
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -260,16 +266,16 @@ const Home = () => (
 
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
-        <Header as='h3' style={{ fontSize: '2em' }}>
-          Breaking The Grid, Grabs Your Attention
+        <Header as='h3' style={{ fontSize: '1.85em' }}>
+          Commandez votre CleverVacci©
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          Instead of focusing on content creation and hard work, we have learned how to master the
-          art of doing nothing by providing massive amounts of whitespace and generic content that
-          can seem massive, monolithic and worth your attention.
+          Avec CleverVacci© vous aurez la science infuse. <br /> On vous surnommera
+          Madame ou Monsieur "Je sais tout", plus personne n'osera vous remettre
+          en question. Certifié par le lobby anti-complotiste !!! 
         </p>
         <Button as='a' size='large'>
-          Read More
+          EN SAVOIR PLUS
         </Button>
 
         <Divider
@@ -278,19 +284,19 @@ const Home = () => (
           horizontal
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href='/#'>Case Studies</a>
+          <a href='/#'>BIENTÔT DISPONIBLE</a>
         </Divider>
 
-        <Header as='h3' style={{ fontSize: '2em' }}>
-          Did We Tell You About Our Bananas?
+        <Header as='h3' style={{ fontSize: '1.85em' }}>
+          Vaccins Trans-espèce© bientôt en vente
         </Header>
         <p style={{ fontSize: '1.33em' }}>
-          Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-          it's really true. It took years of gene splicing and combinatory DNA research, but our
-          bananas can really dance.
+           Dauphin, loup, lion ou tigre : vous pourrez bientôt voir la vie autrement.
+           Devenez ce que vous voulez grâce à notre dernière nouveauté. <br /> Qui a dit que la vie 
+           ne devait se limiter qu'à une expérience humaine ? 
         </p>
         <Button as='a' size='large'>
-          I'm Still Quite Interested
+          EN SAVOIR PLUS
         </Button>
       </Container>
     </Segment>
@@ -300,29 +306,29 @@ const Home = () => (
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
-              <Header inverted as='h4' content='About' />
+              <Header inverted as='h4' content='Pour aller plus loin' />
               <List link inverted>
-                <List.Item as='a'>Sitemap</List.Item>
+                <List.Item as='a'>Plan du site</List.Item>
                 <List.Item as='a'>Contact Us</List.Item>
-                <List.Item as='a'>Religious Ceremonies</List.Item>
-                <List.Item as='a'>Gazebo Plans</List.Item>
+                <List.Item as='a'>Ne cliquez surtout pas ici</List.Item>
+                <List.Item as='a'>Les Super-héros préférés de nos développeurs</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='Services' />
               <List link inverted>
-                <List.Item as='a'>Banana Pre-Order</List.Item>
-                <List.Item as='a'>DNA FAQ</List.Item>
-                <List.Item as='a'>How To Access</List.Item>
-                <List.Item as='a'>Favorite X-Men</List.Item>
+                <List.Item as='a'>Pré-commandez le vaccin Trans-espèce©</List.Item>
+                <List.Item as='a'>VENI*VIDI*VACCI FAQ</List.Item>
+                <List.Item as='a'>Nous rejoindre</List.Item>
+                <List.Item as='a'>Les vaccins favoris des X-Men</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>
-                Footer Header
+                Vous ne pourrez pas aller plus bas
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
+                En fait vous pouviez aller un peu plus bas, mais là c'est fini. Stop.
               </p>
             </Grid.Column>
           </Grid.Row>

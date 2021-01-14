@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Grid, Image } from 'semantic-ui-react';
 import axios from 'axios';
-import './ProductDetail.css'
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(null);
@@ -11,16 +10,16 @@ const ProductDetails = () => {
 
   useEffect(() => {
     console.log(slug);
-    const baseUrl = 'http://localhost:5000/product';
+    const baseUrl = `http://localhost:5000/product`;
     if (slug) {
-      axios.get(`${baseUrl}/${slug}`)
-        .then(res => console.log('Res', res.data[0]) || setProduct(res.data[0]))
+      axios.get(`${baseUrl}/products/${slug}`)
+        .then(res => setProduct(res.data[0]))
         .catch(err => {
           console.error(err);
         })
     } else {
       axios.get(`${baseUrl}`)
-        .then(res => console.log('Res', res.data[0]) || setProduct(res.data[0]))
+        .then(res => console.log('Res', res.data) || setProduct(res.data))
         .catch(err => {
           console.error(err);
         })
