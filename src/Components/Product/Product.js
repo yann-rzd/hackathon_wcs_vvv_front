@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import ProductDetails from './ProductDetail';
 import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
 import {
@@ -19,7 +20,6 @@ import {
 } from 'semantic-ui-react';
 
 import './Product.css';
-import ProductDetails from './ProductDetail';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -184,17 +184,18 @@ const Product = () => {
         .catch(err => {
           console.error(err);
         })
-    }, [])
+  }, [])
 
   if (!product) {
     return <p>Loading...</p>;
   }
   return (
     <div>
+      Hello
       {
-        product && product.map(prod => 
-          <ProductDetails key={prod.id} product={prod}/>
-        )
+        // product && product.map(prod => 
+        //   <ProductDetails key={prod.id} product={prod}/>
+        // )
       }
 
     </div>
