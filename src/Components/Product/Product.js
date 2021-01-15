@@ -18,8 +18,7 @@ import {
   Visibility
 } from 'semantic-ui-react';
 
-import './Product.css';
-import ProductDetails from './ProductDetail';
+//import ProductDetails from './ProductDetail';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -191,11 +190,6 @@ const Product = () => {
   }
   return (
     <div>
-      {
-        product && product.map(prod => 
-          <ProductDetails key={prod.id} product={prod}/>
-        )
-      }
 
     </div>
   )

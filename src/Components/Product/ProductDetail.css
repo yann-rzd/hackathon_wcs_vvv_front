@@ -1,0 +1,11 @@
+.PostDetails {
+  height: 100px;
+}
+
+img.ui.image {
+  width: 225px;
+}
+
+.ui.column.grid {
+  height: 225px;
+}
