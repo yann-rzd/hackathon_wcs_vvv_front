@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { createMedia } from '@artsy/fresnel';
 import { Helmet } from 'react-helmet';
@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 import {
   Button,
   Container,
-  Divider,
+  // Divider,
   Grid,
   Header,
   Icon,
-  Image,
+  // Image,
   List,
   Menu,
   Segment,
@@ -176,31 +176,55 @@ ResponsiveContainer.propTypes = {
 const Product = () => {
   const [product, setProduct] = useState(null);
   const [duration, setDuration] = useState("");
-  const [searchResults, setSearchResults] = useState("");
+  const [decision, setDecision] = useState(false)
+  // const [ filterDur, setFilterDur ] = useState({
+  //   filterDur: All,
+  //   2h,
+  //   4h,
+  //   24h,
+  //   48h
+  // })
+  // const [searchResults, setSearchResults] = useState("");
   const { duration_effect } = useParams();
+  const history = useHistory()
 
   useEffect(() => {
     const baseUrl = `http://localhost:5000/product/duration`;
-    if (duration !== "") {
+    if ( duration_effect ) {
       axios.get(`${baseUrl}?h=${duration_effect}`)
-      .then(res => res.data.duration_effect)
-      .then((prod) => setSearchResults(prod))
+      .then(res => console.log('Res Products', res.data) || res.data)
+      .then((prod) => setProduct(prod))
       .catch(err => {
         console.error(err);
       })
     } else {
-      setSearchResults([]);
+      const baseUrl = `http://localhost:5000/product`;
+      axios.get(`${baseUrl}`)
+        .then(res => setProduct(res.data))
+        .catch(err => {
+          console.error(err);
+        });
     }
   }, [duration, duration_effect]);
 
-  useEffect(() => {
-    const baseUrl = `http://localhost:5000/product`;
-      axios.get(`${baseUrl}`)
-        .then(res => console.log('Res Products', res.data) || setProduct(res.data))
-        .catch(err => {
-          console.error(err);
-        })
-  }, [])
+  // const filterDur = () => {
+  //   const baseUrl = `http://localhost:5000/product/duration`;
+  //   if (duration !== "") {
+  //     axios.get(`${baseUrl}?h=${duration_effect}`)
+  //     .then(res => res.data)
+  //     .then((prod) => setFilterDur(prod.duration_effect))
+  //     .catch(err => {
+  //       console.error(err);
+  //   })
+  // }
+
+  const filterDur = () => {
+    if(!decision) {
+      return product
+    } else {
+      setProduct(duration)
+    }
+  }
 
   if (!product) {
     return <p>Loading...</p>;
@@ -220,18 +244,18 @@ const Product = () => {
           can seem massive, monolithic and worth your attention.
         </p>
         <br />
-        {
+        
           <div>
             <label>Durée :</label>
-            <select>
-              <option>Tout</option>
-              <option>2h</option>
-              <option>4h</option>
-              <option>24h</option>
-              <option>48h</option>
+            <select onChange={(e) => history.push(`/products/${e.target.value}`)}>
+              <option value="">All</option>
+              <option value="2h">2h</option>
+              <option value="4h">4h</option>
+              <option value="24h">24h</option>
+              <option value="48h">48h</option>
             </select>
           </div>
-        }
+        
         {
         product && product.map(prod => 
           <div className='PostDetails'>
@@ -249,7 +273,7 @@ const Product = () => {
                   <p><strong>{prod.power}</strong></p>
                   <p>Durée : {prod.duration_effect}</p>
                   <br />
-                  <p className="descrip" >Effet secondaire : {prod.effect}</p>
+                  <p className="descrip" ><strong>Effet secondaire : </strong>{prod.effect}</p>
                 </div>
                 <div>
                   <p>Prix : {prod.price} €</p>

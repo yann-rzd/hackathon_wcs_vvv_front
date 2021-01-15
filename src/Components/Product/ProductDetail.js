@@ -12,7 +12,7 @@ const ProductDetails = () => {
     console.log(slug);
     const baseUrl = `http://localhost:5000/product`;
     if (slug) {
-      axios.get(`${baseUrl}/products/${slug}`)
+      axios.get(`${baseUrl}/${slug}`)
         .then(res => setProduct(res.data[0]))
         .catch(err => {
           console.error(err);
@@ -44,12 +44,15 @@ const ProductDetails = () => {
               <h2>{product.name}</h2>
               <p><strong>{product.power}</strong></p>
               <p>{product.description}</p>
-              <p>Durée : {product.duration_effect}</p>
-              <p>Effet secondaire : {product.effect}</p>
+              <p><strong>Durée : </strong>{product.duration_effect}</p>
+              <p><strong>Effet secondaire : </strong>{product.effect}</p>
             </Grid.Column>
             <Grid.Column width={2}>
-              <p>Prix : {product.price}</p>
+              <p>Prix : {product.price} €</p>
             </Grid.Column>
+            <Link to={'/products'}>
+                <button>Retour</button>
+            </Link>
       </Grid>   
     </div>
   );
