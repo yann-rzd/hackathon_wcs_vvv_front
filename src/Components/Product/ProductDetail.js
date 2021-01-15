@@ -50,10 +50,10 @@ const ProductDetails = () => {
             <Grid.Column width={2}>
               <p>Prix : {product.price} €</p>
             </Grid.Column>
+      </Grid>   
             <Link to={'/products'}>
                 <button>Retour</button>
             </Link>
-      </Grid>   
     </div>
   );
 }
